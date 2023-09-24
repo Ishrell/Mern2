@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date and Time Display</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button type="button" onclick="displayGMTTimeWithOffset()">Show GMT Time with Offset</button>
+    <br>
+    <br>
+    <button type="button" onclick="displayCurrentDate()">Show Current Date</button>
+    <div id="currentDateTime"></div>
+  </div>
+  <script>
+    function displayGMTTimeWithOffset() {
+      // Get the current time
+      let currentTime = new Date();
+
+      // Get the GMT offset in minutes (e.g., +120 for GMT+2, -300 for GMT-5)
+      let gmtOffsetMinutes = currentTime.getTimezoneOffset();
+
+      // Convert the offset to hours and calculate the GMT offset string
+      let gmtOffsetHours = Math.abs(gmtOffsetMinutes) / 60;
+      let gmtOffsetString = (gmtOffsetMinutes >= 0 ? "-" : "+") + padZeroes(Math.floor(gmtOffsetHours)) + ":" + padZeroes(gmtOffsetMinutes % 60);
+
+      // Calculate the GMT time by adjusting the local time based on the offset
+      let gmtTime = new Date(currentTime.getTime() + gmtOffsetMinutes * 60 * 1000);
+
+      // Display the GMT time with offset
+      document.getElementById("currentDateTime").innerHTML = "Current Time: " + gmtTime.toUTCString() + gmtOffsetString;
+    }
+
+    function displayCurrentDate() {
+      // Get the current date
+      let currentDate = new Date();
+
+      // Display the current date
+      document.getElementById("currentDateTime").innerHTML = "Current Date: " + currentDate.toLocaleDateString();
+    }
+
+    // Helper function to pad zeroes to single-digit numbers
+    function padZeroes(num) {
+      return num.toString().padStart(2, '0');
+    }
+  </script>
+</body>
+</html>
