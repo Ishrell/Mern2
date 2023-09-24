@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="#">
+  <style>
+    .container {
+      width: 600px;
+      margin: 0 auto;
+      background-color: #f6d327;
+    background-image: linear-gradient(315deg, #f6d327 0%, #de4daa 74%);
+    }
+    
+    form {
+      padding: 50px;
+      border: 1px solid #ccc;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px; /* Reduced margin for labels */
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px; /* Increased margin for inputs and selects */
+      border: 1px solid #ccc;
+    }
+    
+    select {
+      height: 30px;
+    }
+    
+    input[type="submit"] {
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 10px; /* Added margin at the top of the submit button */
+    }
+    
+    .checkbox-label {
+      display: flex; /* Align checkbox and label horizontally */
+      align-items: center;
+    }
+    
+    /* Adjust styling for the terms and conditions checkbox and label */
+    input[type="checkbox"] {
+      margin-right: 5px; /* Add a small margin to separate checkbox and label */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form action="/register" method="post">
+      <h1>Registration Form</h1>
+
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" id="first_name" placeholder="First Name">
+      
+      <label for="last_name">Last Name</label>
+      <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+      
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Email">
+      
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password">
+      
+      <label for="password_confirmation">Re-enter Password</label>
+      <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Re-enter Password">
+
+      <label for="gender">Gender</label>
+      <select name="gender" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="age">Age</label>
+      <input type="number" name="age" id="age" placeholder="Age">
+      
+      <label for="phone_number">Phone Number</label>
+      <input type="tel" name="phone_number" id="phone_number" placeholder="Phone Number">
+      
+      <label for="address">Address</label>
+      <input type="text" name="address" id="address" placeholder="Address">
+      
+      <label for="state">State</label>
+      <input type="text" name="state" id="state" placeholder="State">
+      
+      <label for="country">Country</label>
+      <input type="text" name="country" id="country" placeholder="Country">
+
+      <label for="languages_known">Languages Known</label>
+      <select name="languages_known[]" id="languages_known" multiple>
+        <option value="english">English</option>
+        <option value="kannada">Kannada</option>
+        <option value="hindi">Hindi</option>
+        <option value="telugu">Telugu</option>
+      </select>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="terms_and_conditions" id="terms_and_conditions" required>
+        I agree to the terms and conditions.
+      </label>
+
+      <input type="submit" value="Register">
+    </form>
+  </div>
+</body>
+<script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      if (form.checkValidity()) {
+        form.submit();
+      }
+    });
+</script>
+</html>
