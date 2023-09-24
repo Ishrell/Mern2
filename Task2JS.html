@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Task 2 Javascript</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <p> Welcome to task 2 Javascript. Inspect page to check output.</p>
+    <div class="container-fluid">
+    <p>
+
+        This is the code used.
+        <br>
+        <br>
+    <div>
+        <p>
+        function sortStringAlphabetically(str) {
+        <br>
+            const sortedString = str.toLowerCase().split('').sort().join('');
+            <br>
+            return sortedString;
+            <br>
+          }
+          <br>
+          console.log('"webmaster" is the orginal string.')
+          <br>
+          const string = 'webmaster';
+          <br>
+          const sortedString = sortStringAlphabetically(string);
+          <br>
+          console.log(sortedString);
+          <br>
+    </p>
+    </div>
+    </div>
+        <script>
+            function sortStringAlphabetically(str) {
+                const sortedString = str.toLowerCase().split('').sort().join('');
+                return sortedString;
+              }
+              console.log('"webmaster" is the orginal string.')
+              const string = 'webmaster';
+              const sortedString = sortStringAlphabetically(string);
+              console.log(sortedString);
+        </script>
+    </body>
+</html>
