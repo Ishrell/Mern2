@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Calculator</title>
+  <style>
+    .calculator-box {
+      border: 2px solid black;
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-box">
+    <form>
+      <label for="number1">Number 1:</label>
+      <input type="number" id="number1" required>
+      <br>
+      <label for="number2">Number 2:</label>
+      <input type="number" id="number2" required>
+      <br>
+      <button type="button" onclick="multiply()">Multiply</button>
+      <button type="button" onclick="divide()">Divide</button>
+      <div id="result"></div>
+    </form>
+  </div>
+  <script>
+    function multiply() {
+      let number1 = parseFloat(document.getElementById("number1").value);
+      let number2 = parseFloat(document.getElementById("number2").value);
+      let multiplication = number1 * number2;
+      document.getElementById("result").innerHTML = "The Result is: " + multiplication;
+    }
+
+    function divide() {
+      let number1 = parseFloat(document.getElementById("number1").value);
+      let number2 = parseFloat(document.getElementById("number2").value);
+      if (number2 !== 0) {
+        let division = number1 / number2;
+        document.getElementById("result").innerHTML = "The Result is: " + division;
+      } else {
+        document.getElementById("result").innerHTML = "Error: Division by zero!";
+      }
+    }
+  </script>
+</body>
+</html>
