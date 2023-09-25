@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Include FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            background-color: #f3f5f6; /* Background color for the container */
+            padding: 15px;
+            border-radius: 4px;
+            max-width: 600px; /* Adjust the maximum width as needed */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        /* Form styles */
+        .error {
+            border: 1px solid red;
+        }
+
+        .error-message {
+            color: red;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #form {
+            width: 100%;
+        }
+
+        .input-control {
+            margin-bottom: 20px;
+        }
+
+        label, input, button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container"> 
+        <form id="form" action="/">
+            <h1>Registration</h1>
+            <div class="input-control">
+                <label for="first-name"><i class="fas fa-user"></i> First Name:</label>
+                <input id="first-name" class="form-control" type="text" placeholder="First Name">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="last-name"><i class="fas fa-user"></i> Last Name:</label>
+                <input id="last-name" class="form-control" type="text" placeholder="Last Name">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                <input id="email" class="form-control" type="email" placeholder="E-mail Address">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="phone"><i class="fas fa-phone"></i> Phone#:</label>
+                <input id="phone" class="form-control" type="text" placeholder="(845)555-123">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="address"><i class="fas fa-address-card"></i> Address:</label>
+                <input id="address" class="form-control" type="text" placeholder="Address">
+                <div class="error"></div>
+            </div>
+    
+            <div class="input-control">
+                <label for="city"><i class="fas fa-city"></i> City:</label>
+                <input id="city" class="form-control" type="text" placeholder="City">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="state"><i class="fas fa-globe"></i> State:</label>
+                <select id="state" class="form-control">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                </select>
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label><i class="fas fa-server"></i> Do you have hosting?:</label>
+                <input type="radio" id="yes" name="hosting" value="yes">
+                <label for="yes">Yes</label>
+                <input type="radio" id="no" name="hosting" value="no">
+                <label for="no">No</label>
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="project-description"><i class="fas fa-comments"></i> Project Description:</label>
+                <input id="project-description" class="form-control" type="text" placeholder="Project Description">
+                <div class="error"></div>
+            </div>
+            <button type="submit" class="btn btn-warning"><i class="fas fa-paper-plane"></i> Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script>
+    // Cache elements
+    const form = document.getElementById('form');
+
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const email = document.getElementById('email'); // Add other input elements here
+    // etc
+
+    // Email validation function
+    function validEmail(email) {
+        // Implement your email validation logic here
+        return true; // Placeholder logic, replace with your validation
+    }
+
+    // Validate on submit
+    function validateOnSubmit() {
+
+        const fname = firstName.value;
+        const lname = lastName.value;
+
+        if (!fname) {
+            setError(firstName, 'First name is required');
+            return false;
+        }
+
+        // Email validation
+        if (email.value) {
+            if (!validEmail(email.value)) {
+                setError(email, 'Provide a valid email address');
+                return false;
+            }
+        }
+
+        // Add similar validation for other input fields
+
+        return true;
+
+    }
+
+    // Set error
+    function setError(element, message) {
+        element.classList.add('error');
+        element.nextElementSibling.innerText = message;
+    }
+
+    // Clear error
+    function clearError(element) {
+        element.classList.remove('error');
+        element.nextElementSibling.innerText = '';
+    }
+
+    // Submit handler
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (validateOnSubmit()) {
+            form.submit();
+        }
+    });
+</script>
+
+</body>
+</html>
